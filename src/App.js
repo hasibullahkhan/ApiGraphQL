@@ -7,6 +7,7 @@ function App() {
 
       {/* <ApiGithub /> */}
       <GithubGraphQL />
+      GithubAPI
     </pre>
   );
 }

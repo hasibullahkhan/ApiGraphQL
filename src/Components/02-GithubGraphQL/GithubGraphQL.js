@@ -1,45 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'https://api.github.com',
+    baseURL: 'https://api.github.com',      // Github
     headers: {
-        Authorization: `bearer ${process.env.REACT_APP_GITHUB_ACCESS_TOKEN}`,
+        Authorization: `bearer ${process.env.REACT_APP_GITHUB_ACCESS_TOKEN}`,  // access token
     }
 });
 
-// const api = axios.create({
-//     baseURL: 'https://api.github.com',      // Github
-//     headers: {
-//         Authorization: `bearer ${process.env.REACT_APP_GITHUB_ACCESS_TOKEN}`,  // access token
-//     }
-// });
 
-function GithubGraphQL() {
 
-    const fatchData_ql = async (abc) => {
+function GithubAPI() {
 
+    const fetchData_ql = async (organizationName) => {
         const QUERY_ORGANIZATION = `query queryOrganization($organizationName: String!){
-            organization(login: $organizationName){
-             name
-             description
-         }
-     }` ;
-
+            organization(login: $organizationName) {
+                name
+                description
+                url
+                createdAt
+            }
+}`;
         const res = await api.post('/graphql', {
             query: QUERY_ORGANIZATION,
             variables: {
-                organizationName: abc
+                organizationName
             }
         })
-        console.log('GraphQL Response:', res)
+        console.log('GraphQL Response: ', res);
     }
 
+    useEffect(() => {
+        fetchData_ql("qutbITech")
 
-    return (<pre>
-        <h1> GithubGraphQL</h1>
-    </pre>
-    )
+    }, [])
+    return (
+        <div>
+
+        </div>
+    );
 
 }
-export default GithubGraphQL;
+export default GithubAPI;
