@@ -1,24 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-
+import ApiGithub from "./Components/01-ApiGithub/ApiGithub"
+import GithubGraphQL from './Components/02-GithubGraphQL/GithubGraphQL';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <pre>
+
+      {/* <ApiGithub /> */}
+      <GithubGraphQL />
+    </pre>
   );
 }
 
